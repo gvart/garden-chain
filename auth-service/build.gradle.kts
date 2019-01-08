@@ -4,6 +4,9 @@ import java.net.URI
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val springCloudVersion: String by project
+val logstashEncodeVersion: String by project
+val jaxbApiVersion: String by project
+val javaxActivationVersion: String by project
 
 buildscript {
     repositories {
@@ -32,17 +35,24 @@ dependencies {
     implementation(kotlin("reflect"))
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-    implementation("org.springframework.cloud:spring-cloud-config")
+    implementation("org.springframework.cloud:spring-cloud-config-client")
+
     //Tracing
     implementation("org.springframework.cloud:spring-cloud-starter-zipkin")
     implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
-    implementation("net.logstash.logback:logstash-logback-encoder:5.2")
+    implementation("net.logstash.logback:logstash-logback-encoder:$logstashEncodeVersion")
 
     implementation("org.postgresql:postgresql")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.liquibase:liquibase-core")
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    // need to avoid 'java.lang.TypeNotPresentException: Type javax.xml.bind.JAXBContext not present' if run on jdk 11
+    implementation("javax.xml.bind:jaxb-api:$jaxbApiVersion")
+    implementation("com.sun.xml.bind:jaxb-impl:$jaxbApiVersion")
+    implementation("com.sun.xml.bind:jaxb-core:$jaxbApiVersion")
+    implementation("javax.activation:activation:$javaxActivationVersion")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "junit")
     }

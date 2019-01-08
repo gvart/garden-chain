@@ -1,0 +1,18 @@
+##Common config for all profiles
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.server.user.name}:${eureka.server.user.password}@eureka-server:8761/eureka/
+    healthcheck:
+      enabled: false
+  server:
+    user:
+      name: username
+      password: password
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://auth-service:8100/uaa/oauth/users/current

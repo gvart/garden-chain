@@ -4,6 +4,8 @@ import java.net.URI
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val springCloudVersion: String by project
+val jaxbApiVersion: String by project
+val javaxActivationVersion: String by project
 
 buildscript {
     repositories {
@@ -30,6 +32,12 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
+    // need to avoid 'java.lang.TypeNotPresentException: Type javax.xml.bind.JAXBContext not present' if run on jdk 11
+    implementation("javax.xml.bind:jaxb-api:$jaxbApiVersion")
+    implementation("com.sun.xml.bind:jaxb-impl:$jaxbApiVersion")
+    implementation("com.sun.xml.bind:jaxb-core:$jaxbApiVersion")
+    implementation("javax.activation:activation:$javaxActivationVersion")
+
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
     implementation("org.springframework.cloud:spring-cloud-config-client")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {

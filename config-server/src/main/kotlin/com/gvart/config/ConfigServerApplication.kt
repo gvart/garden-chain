@@ -1,11 +1,11 @@
-package com.gvart.auth
+package com.gvart.config
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.cloud.config.server.EnableConfigServer
 
-@SpringBootApplication
 @EnableConfigServer
+@SpringBootApplication
 class ConfigServerApplication
 
 fun main(args: Array<String>) {

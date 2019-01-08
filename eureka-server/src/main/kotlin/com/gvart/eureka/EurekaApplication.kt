@@ -1,13 +1,13 @@
-package com.gvart.auth
+package com.gvart.eureka
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer
 
-@SpringBootApplication
 @EnableEurekaServer
-class ConfigServerApplication
+@SpringBootApplication
+class EurekaApplication
 
 fun main(args: Array<String>) {
-    runApplication<ConfigServerApplication>(*args)
+    runApplication<EurekaApplication>(*args)
 }

@@ -1,0 +1,35 @@
+server:
+  port: 8100
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/oauth2
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:liquibase/master.yml
+    enabled: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      # Disable feature detection by this undocumented parameter. Check the org.hibernate.engine.jdbc.internal.JdbcServiceImpl.configure method for more details.
+      hibernate.temp.use_jdbc_metadata_defaults: false
+    database: postgresql
+  main:
+    allow-bean-definition-overriding: true
+
+security:
+  oauth2:
+    client:
+      client-id: auth-service
+      client-secret: secret
+      access-token-uri: http://auth-service:8100/uaa/oauth/token
+      grant-type: client_credentials
+      scope: server
