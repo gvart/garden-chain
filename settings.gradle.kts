@@ -1,6 +1,6 @@
 rootProject.name = "garden-chain"
 
-include("config-server", "eureka-server", "auth-service")
+include("config-server", "eureka-server", "gateway", "device-service")
 
 pluginManagement {
     resolutionStrategy {

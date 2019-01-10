@@ -11,8 +11,3 @@ eureka:
     user:
       name: username
       password: password
-
-security:
-  oauth2:
-    resource:
-      user-info-uri: http://auth-service:8100/uaa/oauth/users/current
