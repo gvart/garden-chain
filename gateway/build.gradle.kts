@@ -5,6 +5,7 @@ import java.net.URI
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val springCloudVersion: String by project
+val webAppPath = "${project.projectDir}/src/main/webapp"
 
 buildscript {
     repositories {
@@ -54,7 +55,7 @@ node {
     npmVersion = "6.4.0"
     download = true
     workDir = File("${project.buildDir}/node")
-    nodeModulesDir = File("${project.projectDir}/src/main/webapp")
+    nodeModulesDir = File(webAppPath)
 }
 
 jib {
@@ -83,13 +84,14 @@ tasks {
             freeCompilerArgs = listOf("-Xjsr305=strict")
         }
     }
-//    withType<NpmTask> {
-//        setArgs(listOf("run", "build"))
-//    }
+    val buildFrontend by creating(NpmTask::class) {
+        setArgs(listOf("run", "build:prod"))
+    }
+
     withType<Jar> {
-        from("${project.projectDir}/src/main/webapp/dist/GardenChain") {
+        from("$webAppPath/dist") {
           into("static")
         }
-       dependsOn("npm_run_build")
+       dependsOn(buildFrontend)
     }
 }
