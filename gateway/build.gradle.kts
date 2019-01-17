@@ -87,9 +87,9 @@ tasks {
 //        setArgs(listOf("run", "build"))
 //    }
     withType<Jar> {
-        from("webapp/dist") {
+        from("${project.projectDir}/src/main/webapp/dist/GardenChain") {
           into("static")
         }
-       //dependsOn()
+       dependsOn("npm_run_build")
     }
 }

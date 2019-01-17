@@ -1,2 +1,20 @@
 server:
   port: 8080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: frontend
+          uri: forward:///index.html
+          predicates:
+            - Path=/
+        - id: device_service
+          uri: lb://device-service
+          predicates:
+            - Path=/api/v1/device/**
+          filters:
+            - RewritePath=/api/v1/user/(?<segment>.*), /$\{segment}
