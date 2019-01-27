@@ -24,15 +24,13 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven {
-        url = URI("http://repo.spring.io/milestone")
-    }
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
