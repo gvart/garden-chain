@@ -98,3 +98,4 @@ hs_err_pid*
 /gateway/src/main/webapp/dist/
 /gateway/build/
 /gateway/out/
+/gateway/src/main/webapp/.idea/
