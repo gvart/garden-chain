@@ -93,9 +93,14 @@ hs_err_pid*
 
 /config-server/build/
 /eureka-server/build/
+/device-server/build/
+/gateway/build/
+/config-server/out/
+/eureka-server/out/
+/device-service/out/
+/gateway/out/
+
 /.idea/
 /gateway/src/main/webapp/node_modules/
 /gateway/src/main/webapp/dist/
-/gateway/build/
-/gateway/out/
 /gateway/src/main/webapp/.idea/

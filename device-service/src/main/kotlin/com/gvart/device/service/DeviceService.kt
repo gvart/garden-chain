@@ -5,6 +5,7 @@ import com.gvart.device.exception.NotFoundException
 import com.gvart.device.repository.DeviceRepository
 import com.gvart.device.extension.toObject
 import com.gvart.device.transer.DeviceDto
+import com.gvart.device.transer.OperationResponseDto
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -51,4 +52,22 @@ class DeviceService (
         return repository.deleteById(id)
     }
 
+    fun installSoftware(id: String): Mono<OperationResponseDto> {
+        log.info("Request to install software for Device $id")
+        //todo install software on device
+        return findOne(id)
+            .flatMap { device ->
+                install(3).map {
+                    device.softwareInstalled = true
+                    repository.save(device)
+                    it
+                }
+            }
+    }
+
+    private fun install(data: Any) : Mono<OperationResponseDto> {
+        return Mono.fromCallable {
+            OperationResponseDto(success = true)
+        }
+    }
 }

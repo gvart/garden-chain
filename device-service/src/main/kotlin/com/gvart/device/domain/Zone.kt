@@ -7,10 +7,13 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 data class Zone (
     @Id
-    val id: String,
-    val name: String,
-    val description: String,
+    val id: String? = null,
+    var name: String,
+    var description: String,
 
     @DBRef
-    var device: List<Device>
+    val device: Device,
+
+    @DBRef
+    var components: List<PiComponent> = emptyList()
 )

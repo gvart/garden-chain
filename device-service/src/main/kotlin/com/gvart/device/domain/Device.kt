@@ -10,6 +10,7 @@ data class Device (
     val id: String? = null,
     var name: String,
     var description: String,
+    var softwareInstalled: Boolean = false,
     var hostname: String,
 
     @DBRef
