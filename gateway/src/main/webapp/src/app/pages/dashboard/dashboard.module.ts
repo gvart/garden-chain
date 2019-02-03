@@ -1,15 +1,11 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {DashboardRoutingModule, routedComponents} from './dashboard-routing.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatCardModule} from '@angular/material';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     DashboardRoutingModule,
-    MatCardModule,
-    FlexLayoutModule,
   ],
   declarations: [...routedComponents],
 })

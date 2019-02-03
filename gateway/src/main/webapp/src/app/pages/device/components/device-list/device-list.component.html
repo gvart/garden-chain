@@ -1,0 +1,42 @@
+<div fxLayout fxLayoutGap="20px">
+  <mat-card fxFlex>
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Registered Devices</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div id="container" fxLayout="row">
+        <div fxFlex *gcWaitFor="true">
+          <table mat-table matSort [dataSource]="dataSource">
+            <ng-container *ngFor="let column of displayedColumns"
+                          [matColumnDef]="column">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column  | gcJsonProperty}}</th>
+              <td mat-cell *matCellDef="let row">{{row[column]}}</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef class="pr-0">Actions</th>
+              <td mat-cell *matCellDef="let row" class="pr-0">
+                <button mat-icon-button color="primary">
+                  <mat-icon aria-label="Example icon-button with a heart icon">settings</mat-icon>
+                </button>
+                <button mat-icon-button color="warn">
+                  <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns.concat(['actions'])"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns.concat(['actions']);" (click)="onRowClick(row.id)"></tr>
+          </table>
+
+          <!--<mat-paginator #paginator-->
+                         <!--[length]="dataSource.data.length"-->
+                         <!--[pageIndex]="0"-->
+                         <!--[pageSize]="50"-->
+                         <!--[pageSizeOptions]="[25, 50, 100, 250]">-->
+          <!--</mat-paginator>-->
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

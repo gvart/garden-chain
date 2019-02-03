@@ -14,7 +14,7 @@ import {MENU} from './pages-menu';
         <mat-sidenav #snav mode="side" opened>
           <div fxFlex>
             <mat-nav-list>
-              <mat-list-item *ngFor="let item of menu" [routerLink]="item.route">
+              <mat-list-item *ngFor="let item of menu" [routerLink]="item.route" routerLinkActive="active">
                 <mat-icon>{{item.icon}}</mat-icon> <span class="mat-h2 mb-0">{{item.title}}</span></mat-list-item>
             </mat-nav-list>
           </div>
