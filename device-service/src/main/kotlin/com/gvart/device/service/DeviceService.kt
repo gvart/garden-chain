@@ -42,7 +42,7 @@ class DeviceService (
                 val deviceDto = it.t2
                 device.name = deviceDto.name
                 device.description = deviceDto.description
-                device.hostname = deviceDto.hostname
+                device.ipAddress = deviceDto.hostname
                 repository.save(device)
             }
     }
@@ -58,7 +58,7 @@ class DeviceService (
         return findOne(id)
             .flatMap { device ->
                 install(3).map {
-                    device.softwareInstalled = true
+                    device.softwareVersion = true
                     repository.save(device)
                     it
                 }

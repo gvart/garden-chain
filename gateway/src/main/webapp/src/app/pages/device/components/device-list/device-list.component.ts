@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ELEMENT_DATA} from './temp-data';
+import {Component, OnInit} from '@angular/core';
+import {Device} from '../../../../shared/service/device/device.model';
+import {DeviceService} from '../../../../shared/service/device/device.service';
 
 @Component({
   selector: 'app-device-list',
@@ -7,13 +8,11 @@ import {ELEMENT_DATA} from './temp-data';
   styleUrls: ['./device-list.component.scss']
 })
 export class DeviceListComponent implements OnInit {
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns: string[] = ['name', 'owner', 'registeredAt', 'hostname', 'softwareInstalled'];
+  devices: Device[];
+
+  constructor(private deviceService: DeviceService) {}
 
   ngOnInit() {
-  }
-
-  onRowClick(id: string) {
-    alert(`Not implemented yet ${id}`);
+    this.deviceService.findAll().subscribe(data => this.devices = data);
   }
 }

@@ -1,0 +1,34 @@
+<clr-main-container>
+  <clr-header>
+    <div class="branding">
+      <a routerLink="/pages/dashboard" class="nav-link">
+        <img class="clr-icon" src="/assets/leaves.svg" alt="logo">
+        <span class="title">Garden Chain</span>
+      </a>
+    </div>
+    <div class="header-nav" [clr-nav-level]="1">
+      <a *ngFor="let item of menu" [routerLink]="item.route" class="nav-link" routerLinkActive="active" >
+        <span class="nav-text">{{item.title}}</span>
+      </a>
+    </div>
+
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-icon" clrDropdownTrigger>
+          <clr-icon shape="cog"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a href="#" clrDropdownItem>About</a>
+          <a href="#" clrDropdownItem>Preferences</a>
+          <a href="#" clrDropdownItem>Log out</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </clr-header>
+  <div class="content-container">
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</clr-main-container>

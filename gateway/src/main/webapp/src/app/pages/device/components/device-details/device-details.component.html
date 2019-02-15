@@ -1,0 +1,64 @@
+<div class="clr-row">
+  <div class="clr-col-12">
+    <div class="card" *ngIf="device">
+      <div class="card-header">
+        Device: <u>{{device.name}}</u>
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <table class="table table-vertical">
+            <tbody>
+              <tr>
+                <th width="30%">Id</th>
+                <td>{{device.name}}</td>
+              </tr>
+              <tr>
+                <th>Description</th>
+                <td>{{device.description}}</td>
+              </tr>
+              <tr>
+                <th>IP Address</th>
+                <td>{{device.ipAddress}}</td>
+              </tr>
+              <tr>
+                <th>Registration Date</th>
+                <td>{{device.registeredAt}}</td>
+              </tr>
+              <tr>
+                <th>Software Version</th>
+                <td>{{device.softwareVersion}}</td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                <td>{{device.status}}</td>
+              </tr>
+              <tr>
+                <th>Owner</th>
+                <td>{{device.owner}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Zones</h4>
+          <table class="table table-compact">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Soil Humidity</th>
+                <th>Air Humidity</th>
+                <th>Air Temperature</th>
+                <th>GPIO</th>
+              </tr>
+            </thead>
+            <!--todo-->
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

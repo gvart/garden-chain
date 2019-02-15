@@ -15,7 +15,7 @@ fun DeviceDto.toObject(): Device {
         registeredAt = LocalDateTime.now(),
         owner = this.owner,
         status = DeviceStatus.INACTIVE,
-        hostname = this.hostname
+        ipAddress = this.hostname
     )
 }
 
