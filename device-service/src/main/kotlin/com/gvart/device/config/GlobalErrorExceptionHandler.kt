@@ -13,6 +13,7 @@ import org.springframework.http.codec.ServerCodecConfigurer
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.server.*
+import org.springframework.web.server.ResponseStatusException
 import reactor.core.publisher.Mono
 
 /***
@@ -36,10 +37,13 @@ class GlobalErrorWebExceptionHandler(
     fun readerErrorResponse(request: ServerRequest): Mono<ServerResponse> {
         val statusCode  = when(getError(request)) {
             is NotFoundException -> HttpStatus.NOT_FOUND
+            is ResponseStatusException -> {
+                (getError(request) as ResponseStatusException).status
+            }
             else -> HttpStatus.INTERNAL_SERVER_ERROR
         }
 
-        val errorAttributes = getErrorAttributes(request, false)
+        val errorAttributes = getErrorAttributes(request, true)
         errorAttributes["status"] = statusCode.value()
         errorAttributes["error"] = statusCode.reasonPhrase
 

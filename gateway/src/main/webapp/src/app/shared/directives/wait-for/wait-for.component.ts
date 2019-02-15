@@ -3,10 +3,9 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'gc-wait-for',
   template: `
-    <mat-spinner
-      [diameter]="250"
-      [strokeWidth]="10">
-    </mat-spinner>
+    <span class="spinner spinner-inverse">
+      Loading...
+    </span>
   `,
 })
 export class WaitForComponent {

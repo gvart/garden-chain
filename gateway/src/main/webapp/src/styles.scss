@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 
 html {
   height: 100%;
@@ -9,16 +8,6 @@ body {
   margin: 0;
 }
 
-mat-sidenav {
-  width: 200px;
-}
-app-pages, mat-sidenav-container {
-  height: 100%;
-}
-
-mat-sidenav-content {
-  background-color: #ebebeb;
-}
 
 .mb-0 {
   margin-bottom: 0 !important;

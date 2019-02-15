@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val springCloudVersion: String by project
 val logstashEncodeVersion: String by project
+val testContainersVersion: String by project
 val jaxbApiVersion: String by project
 val javaxActivationVersion: String by project
 
@@ -46,6 +47,8 @@ dependencies {
     }
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntime("org.junit.jupiter:junit-jupiter-engine")
+    testCompile("org.testcontainers:testcontainers:$testContainersVersion")
+    testCompile("org.testcontainers:junit-jupiter:$testContainersVersion")
 }
 
 dependencyManagement {
